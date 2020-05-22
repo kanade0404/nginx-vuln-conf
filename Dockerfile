@@ -1,4 +1,4 @@
-FROM jboesl/docker-nginx-headers-more
+FROM nginx:1.17.8
 RUN rm /etc/nginx/nginx.conf
 ADD /conf/nginx.conf /etc/nginx/nginx.conf
 ADD /html/index.html /usr/share/nginx/html/index.html
@@ -10,5 +10,6 @@ RUN mkdir -p /var/www/data/ && \
     mkdir -p /var/www/data/private/ && \
     echo 'This is public directory.' > /var/www/data/public/public.txt && \
     echo 'flag{ng1nx_path_traversal_vulnerability}' > /var/www/data/private/private.txt
+SHELL ["/bin/bash", "-c"]
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 EXPOSE 80
