@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP Splitting検証ページ</title>
+</head>
+<body>
+    <div>
+        <h3>HTTP Splitting検証ページ</h3>
+        <p>HTTP Splittingの検証ができます。開発者ツールを開いた状態で各ページに遷移してRequest Headerを確認してください。</p>
+        <ul>
+            <li><a href="/split/unsafe/hoge%20below%0d%0ax-crlf-header:injected.json">HTTP Splitting攻撃用</a></li>
+            <li><a href="/split/unsafe_uri/%0d%0aX-CSRF-Token:injected%0d%0aaaa.json">HTTP Splitting攻撃用($uri使用)</a></li>
+            <li><a href="/split/safe/hoge%20below%0d%0ax-crlf-header:injected.json">HTTP Splitting(対策ずみ)</a></li>
+            <li><a href="/split/safe_uri/%0d%0aX-CSRF-Token:injected%0d%0aaaa.json">HTTP Splitting($request_uri使用)</a></li>
+        </ul>
+    </div>
+</body>
+</html>
